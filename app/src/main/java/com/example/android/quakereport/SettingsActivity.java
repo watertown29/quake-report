@@ -1,5 +1,6 @@
 package com.example.android.quakereport;
 
+import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
@@ -17,6 +18,13 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object value) {
+            String stringValue = value.toString();
+            preference.setSummary(stringValue);
+            return true;
         }
 
     }
